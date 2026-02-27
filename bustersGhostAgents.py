@@ -14,7 +14,6 @@
 
 import ghostAgents
 from game import Directions
-from game import Actions
 from util import manhattanDistance
 import util
 
@@ -52,7 +51,6 @@ class DispersingGhost( ghostAgents.GhostAgent ):
 
         bestDistance = min(sumOfDistances)
         numBest = [bestDistance == dist for dist in sumOfDistances].count(True)
-        distribution = util.Counter()
         for action, distance in zip(legalActions, sumOfDistances):
             if distance == bestDistance: distribution[action] += self.spreadProb / numBest
             distribution[action] += (1 - self.spreadProb) / len(legalActions)
